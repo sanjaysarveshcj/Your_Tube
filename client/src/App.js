@@ -8,6 +8,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Drawersliderbar from '../src/Component/Leftsidebar/Drawersliderbar'
 import Createeditchannel from './Pages/Channel/Createeditchannel';
 import Videoupload from './Pages/Videoupload/Videoupload';
+import Displayuserpoints from './Pages/UserPoints/UserPoints';
+import { getUserPoints } from './action/userpoints';
 import { fetchallchannel } from './action/channeluser';
 import { getallvideo } from './action/video';
 import { getallcomment } from './action/comment';
@@ -17,7 +19,9 @@ import { getallwatchlater } from './action/watchlater';
 function App() {
   const [toggledrawersidebar, settogledrawersidebar] = useState({
     display: "none"
-  });
+  })
+
+
   const dispatch = useDispatch()
 
   
@@ -28,6 +32,7 @@ function App() {
     dispatch(getallhistory())
     dispatch(getalllikedvideo())
     dispatch(getallwatchlater())
+    dispatch(getUserPoints())
   }, [dispatch])
 
 
@@ -45,6 +50,8 @@ function App() {
   }
   const [editcreatechanelbtn, seteditcreatechanelbtn] = useState(false);
   const [videouploadpage, setvideouploadpage] = useState(false);
+  const [displayUserPoints, dispuserpoints] = useState(false);
+
   return (
     <Router>
       {
@@ -53,9 +60,12 @@ function App() {
       {editcreatechanelbtn && (
         <Createeditchannel seteditcreatechanelbtn={seteditcreatechanelbtn} />
       )}
-      <Navbar seteditcreatechanelbtn={seteditcreatechanelbtn} toggledrawer={toggledrawer} />
+      {displayUserPoints && (
+        <Displayuserpoints dispuserpoints={dispuserpoints} />
+      )}
+      <Navbar seteditcreatechanelbtn={seteditcreatechanelbtn} toggledrawer={toggledrawer} dispuserpoints={dispuserpoints} />
       <Drawersliderbar toggledraw={toggledrawer} toggledrawersidebar={toggledrawersidebar} />
-      <Allroutes seteditcreatechanelbtn={seteditcreatechanelbtn} setvideouploadpage={setvideouploadpage} />
+      <Allroutes seteditcreatechanelbtn={seteditcreatechanelbtn} setvideouploadpage={setvideouploadpage}/>
     </Router>
   );
 }

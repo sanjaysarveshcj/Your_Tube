@@ -4,10 +4,9 @@ import dotenv from "dotenv"
 import cors from "cors"
 import bodyParser from "body-parser"
 import videoroutes from './Routes/video.js'
-import userroutes from "./Routes/User.js"
+import userroutes from './Routes/User.js'
 import path from 'path'
 import commentroutes from './Routes/comment.js'
-
 
 dotenv.config()
 const app=express()

@@ -8,6 +8,7 @@ API.interceptors.request.use((req)=>{
     return req;
 })
 
+export const getUserPoints =(userid)=> API.get(`/user/userpoints/${userid}`)
 
 export const login=(authdata)=>API.post("/user/login",authdata);
 export const updatechaneldata=(id,updatedata)=>API.patch(`/user/update/${id}`,updatedata)

@@ -6,7 +6,7 @@ import "./Auth.css"
 import {useDispatch} from "react-redux"
 import { setcurrentuser } from '../../action/currentuser';
 
-const Auth = ({ user, setauthbtn, seteditcreatechanelbtn }) => {
+const Auth = ({ user, setauthbtn, seteditcreatechanelbtn, dispuserpoints }) => {
     const dispatch=useDispatch()
     const logout=()=>{
         dispatch(setcurrentuser(null))
@@ -40,9 +40,15 @@ const Auth = ({ user, setauthbtn, seteditcreatechanelbtn }) => {
                         </>
                     ):(
                         <>
-                            <input type="subnit" className='btn_Auth' value="Create Your Own Channel" onClick={()=>seteditcreatechanelbtn(true)}/>
+                            <input type="submit" className='btn_Auth' value="Create Your Own Channel" onClick={()=>seteditcreatechanelbtn(true)}/>
                         </>
                     )}
+                    <div>
+                        <div className="btn_Auth" onClick={()=>dispuserpoints(true)}>
+                            Your Watch Points
+                        </div>
+                        
+                    </div>
                     <div>
                         <div className="btn_Auth" onClick={()=>logout()}>
                             <BiLogOut/>

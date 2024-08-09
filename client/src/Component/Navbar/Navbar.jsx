@@ -14,22 +14,23 @@ import { useGoogleLogin,googleLogout } from '@react-oauth/google';
 import { setcurrentuser } from '../../action/currentuser';
 
 import {jwtDecode} from "jwt-decode"
-const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
+const Navbar = ({ toggledrawer, seteditcreatechanelbtn, dispuserpoints }) => {
     const [authbtn, setauthbtn] = useState(false)
     const [user, setuser] = useState(null)
     const [profile, setprofile] = useState([])
     const dispatch = useDispatch()
    
 
-    const currentuser = useSelector(state => state.currentuserreducer);
+    const currentuser = useSelector(state=>state.currentuserreducer);
     // console.log(currentuser)
     const successlogin = () => {
         if (profile.email) {
             dispatch(login({ email: profile.email }))
-            console.log(profile.email)
+            //console.log(profile.email)
         }
     }
-    // console.log(currentuser)
+    //const currentuser = null;
+    console.log(currentuser)
     // const currentuser={
     //     result:{
     //         _id:1,
@@ -114,7 +115,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
                         <>
                             <div className="Chanel_logo_App" onClick={() => setauthbtn(true)}>
                                 <p className="fstChar_logo_App">
-                                    {currentuser?.result.name ? (
+                                    {currentuser?.result.name? (
                                         <>{currentuser?.result.name.charAt(0).toUpperCase()}</>
 
                                     ) : (
@@ -135,7 +136,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
             </div>
             {
                 authbtn &&
-                <Auth seteditcreatechanelbtn={seteditcreatechanelbtn} setauthbtn={setauthbtn} user={currentuser} />
+                <Auth seteditcreatechanelbtn={seteditcreatechanelbtn} setauthbtn={setauthbtn} user={currentuser} dispuserpoints={dispuserpoints} />
             }
         </>
     )

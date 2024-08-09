@@ -10,6 +10,7 @@ import { addtohistory } from '../../action/history'
 import { useSelector,useDispatch } from 'react-redux'
 const Videopage = () => {
     const { vid } = useParams();
+    console.log(vid)
     const dispatch=useDispatch()
     const vids=useSelector((state)=>state.videoreducer)
     // const vids = [
@@ -62,17 +63,20 @@ const Videopage = () => {
         dispatch(viewvideo({id:vid}))
     }
     const handlehistory=()=>{
+        console.log( vid, currentuser?.result._id);
         dispatch(addtohistory({
             videoid:vid,
             viewer:currentuser?.result._id,
         }))
     }
+
     useEffect(()=>{
-        if(currentuser){
+        //console.log('triggered')
+        if(currentuser && vid){
             handlehistory();
         }
-        handleviews()
-    },[])
+        handleviews();
+    },[currentuser,vid])
     return (
         <>
             <div className="container_videoPage">
