@@ -1,0 +1,13 @@
+
+.video-player {
+    width: calc(100vw - 4.5rem - 35vw);
+    padding: 1rem;
+}
+
+.video-element{
+    padding: 0.1rem;
+    height: 70vh;
+    width: 100%;
+    background-color: black;
+    border: 1px solid rgba(37, 37, 37, 0.2);
+}

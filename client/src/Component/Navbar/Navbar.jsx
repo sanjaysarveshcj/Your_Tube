@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import logo from "./logo.ico"
 import "./Navbar.css"
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, generatePath } from "react-router-dom"
+import { Link, generatePath, useNavigate } from "react-router-dom"
 import { RiVideoAddLine } from "react-icons/ri"
 import { IoMdNotificationsOutline } from "react-icons/io"
 import { BiUserCircle } from "react-icons/bi"
@@ -12,13 +12,18 @@ import axios from "axios"
 import { login } from "../../action/auth"
 import { useGoogleLogin,googleLogout } from '@react-oauth/google';
 import { setcurrentuser } from '../../action/currentuser';
+import VideoCall from '../../Pages/VideoCall/videocall'
+import { FiVideo } from 'react-icons/fi';
+
 
 import {jwtDecode} from "jwt-decode"
 const Navbar = ({ toggledrawer, seteditcreatechanelbtn, dispuserpoints }) => {
     const [authbtn, setauthbtn] = useState(false)
     const [user, setuser] = useState(null)
     const [profile, setprofile] = useState([])
+    const [isVideoCallEnabled, setIsVideoCallEnabled] = useState(false);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
    
 
     const currentuser = useSelector(state=>state.currentuserreducer);
@@ -81,6 +86,33 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn, dispuserpoints }) => {
         dispatch(setcurrentuser(JSON.parse(localStorage.getItem("Profile"))))
   },[currentuser?.token,dispatch]
 )
+
+
+    useEffect(() => {
+        const checkVideoCallAvailability = () => {
+            const currentHour = new Date().getHours();
+            if (currentHour >= 12 && currentHour < 24) {
+                setIsVideoCallEnabled(true);
+            } else {
+                setIsVideoCallEnabled(false);
+            }
+        };
+
+        checkVideoCallAvailability();
+
+        const interval = setInterval(checkVideoCallAvailability, 60000); // Check every minute
+
+        return () => clearInterval(interval); // Clear interval on component unmount
+    }, []);
+
+    const handleVideoCallClick = () => {
+        if (isVideoCallEnabled) {
+            navigate('/VideoCall');
+        } else {
+            alert('Video Call is only available from 6 PM to 12 AM.');
+        }
+    };
+
     return (
         <>
             <div className="Container_Navbar">
@@ -96,6 +128,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn, dispuserpoints }) => {
                     </Link>
                 </div>
                 <Searchbar />
+                
                 <RiVideoAddLine size={22} className={"vid_bell_Navbar"} />
                 <div className="apps_Box">
                     <p className="appBox"></p>
@@ -110,6 +143,10 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn, dispuserpoints }) => {
                 </div>
 
                 <IoMdNotificationsOutline size={22} className={"vid_bell_Navbar"} />
+
+                <FiVideo size={22} className={`vid_bell_Navbar ${isVideoCallEnabled ? 'enabled' : 'disabled'}`}
+                onClick={handleVideoCallClick} />
+
                 <div className="Auth_cont_Navbar">
                     {currentuser ? (
                         <>
@@ -138,6 +175,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn, dispuserpoints }) => {
                 authbtn &&
                 <Auth seteditcreatechanelbtn={seteditcreatechanelbtn} setauthbtn={setauthbtn} user={currentuser} dispuserpoints={dispuserpoints} />
             }
+            
         </>
     )
 }

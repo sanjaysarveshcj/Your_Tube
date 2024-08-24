@@ -72,6 +72,7 @@
   .comments_VideoPage{
       width: 100%;
       padding-inline-start: 0.5rem;
+
   }
   .moreVideoBar{
       width: calc(100vw - 4.5rem - 70vw);

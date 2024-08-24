@@ -9,6 +9,8 @@ import Drawersliderbar from '../src/Component/Leftsidebar/Drawersliderbar'
 import Createeditchannel from './Pages/Channel/Createeditchannel';
 import Videoupload from './Pages/Videoupload/Videoupload';
 import Displayuserpoints from './Pages/UserPoints/UserPoints';
+//import VideoCall from './Pages/VideoCall/videocall';
+//import Videopage from './Pages/Videopage/Videopage';
 import { getUserPoints } from './action/userpoints';
 import { fetchallchannel } from './action/channeluser';
 import { getallvideo } from './action/video';

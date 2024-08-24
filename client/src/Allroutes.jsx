@@ -9,6 +9,8 @@ import Likedvideo from './Pages/Likedvideo/Likedvideo'
 import Watchhistory from './Pages/Watchhistory/Watchhistory'
 import Watchlater from './Pages/Watchlater/Watchlater'
 import Yourvideo from './Pages/Yourvideo/Yourvideo'
+import VideoCall from './Pages/VideoCall/videocall'
+import VideoCallRoom from './Pages/VideoCall/videocallroom';
 const Allroutes = ({seteditcreatechanelbtn,setvideouploadpage}) => {
   return (
     <Routes>
@@ -21,6 +23,8 @@ const Allroutes = ({seteditcreatechanelbtn,setvideouploadpage}) => {
         <Route path='/Watchlater' element={<Watchlater/>}/>
         <Route path='/Yourvideo' element={<Yourvideo/>}/>
         <Route path='/channel/:cid' element={<Channel seteditcreatechanelbtn={seteditcreatechanelbtn} setvideouploadpage={setvideouploadpage}/>}/>
+        <Route path='/VideoCall' element={<VideoCall/>}/>
+        <Route path="/VideoCall/:roomId" element={<VideoCallRoom />} />
     </Routes>
   )
 }

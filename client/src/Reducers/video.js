@@ -1,4 +1,4 @@
-const videoreducer=(state={data:null},action)=>{
+const videoreducer=(state={data:[]},action)=>{
     switch (action.type) {
         case 'POST_VIDEO':
             return {...state};

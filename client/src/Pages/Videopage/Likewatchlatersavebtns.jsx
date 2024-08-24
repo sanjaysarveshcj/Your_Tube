@@ -19,11 +19,11 @@ const Likewatchlatersavebtns = ({vv,vid}) => {
   const watchlaterlist=useSelector((s)=>s.watchlaterreducer)
   useEffect(()=>{
     likedvideolist?.data.filter(
-      (q)=>q.videoid ===vid && q.viewer ===currentuser.result._id
+      (q)=>q.videoid ===vid && q.viewer ===currentuser.result?._id
     )
     .map((m)=>setlikebtn(true));
     watchlaterlist?.data.filter(
-      (q)=>q.videoid ===vid && q.viewer ===currentuser.result._id
+      (q)=>q.videoid ===vid && q.viewer ===currentuser.result?._id
     )
     .map((m)=>setsavevideo(true));
   },[]);
@@ -80,7 +80,7 @@ const toggledislikevideo=(e,lk)=>{
         <BsThreeDots/>
       </div>
       <div className="btn_VideoPage">
-        <div className="like_videoPage" onClick={(e)=>togglelikevideo(e,vv.Like)}>
+        <div className="like_videoPage" onClick={(e)=>togglelikevideo(e,vv?.Like)}>
           {likebtn? (
             <>
             <AiFillLike size={22} className='btns_videoPage'/>
@@ -90,9 +90,9 @@ const toggledislikevideo=(e,lk)=>{
             <AiOutlineLike size={22} className='btns_videoPage' />
             </>
           )}
-          <b>{vv.Like}</b>
+          <b>{vv?.Like}</b>
         </div>
-        <div className="like_videoPage" onClick={(e)=>toggledislikevideo(e,vv.Like)}>
+        <div className="like_videoPage" onClick={(e)=>toggledislikevideo(e,vv?.Like)}>
           {dislikebtn?(<>
             <AiFillDislike size={22} className='btns_videoPage'/>
           </>):(

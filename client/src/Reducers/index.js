@@ -17,5 +17,5 @@ export default combineReducers({
     historyreducer,
     likedvideoreducer,
     watchlaterreducer,
-    pointsReducer
+    pointsReducer,
 });

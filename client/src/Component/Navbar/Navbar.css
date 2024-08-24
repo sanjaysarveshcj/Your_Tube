@@ -66,3 +66,77 @@
     padding: 0.5rem;
     border-radius: 0.1rem;
 }
+
+ .vid_bell_Navbar {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/*.videoCallModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #202020;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    width: 80%;
+    max-width: 600px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.videoCallModal.hidden {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.videoCallModal button {
+    background-color: #bd1316;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+}
+
+.videoCallModal button:hover {
+    background-color: #e04345;
+    transform: scale(1.05);
+}
+
+.videoCallModal button:active {
+    background-color: #c33c3f;
+    transform: scale(0.95);
+}  */
+/* 
+.vid_bell_Navbar.enabled {
+    display: flex;
+
+}
+
+.vid_bell_Navbar.disabled {
+    display: flex;
+    background-color: rgb(33, 33, 33);
+    
+    color: white;
+} */
+
+
+
+/* .videoCallModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+} */

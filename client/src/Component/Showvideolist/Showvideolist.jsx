@@ -4,6 +4,10 @@ import vid from "../Video/vid.mp4"
 import { useSelector } from 'react-redux'
 const Showvideolist = ({videoid}) => {
   const vids=useSelector(state=>state.videoreducer)
+
+  if (!vids?.data || !Array.isArray(vids.data)) {
+    return <div>No videos available</div>;
+}
     // const vids=[
     //     {
     //       _id:1,
