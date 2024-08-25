@@ -91,7 +91,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn, dispuserpoints }) => {
     useEffect(() => {
         const checkVideoCallAvailability = () => {
             const currentHour = new Date().getHours();
-            if (currentHour >= 12 && currentHour < 24) {
+            if (currentHour >= 18 && currentHour < 24) {
                 setIsVideoCallEnabled(true);
             } else {
                 setIsVideoCallEnabled(false);

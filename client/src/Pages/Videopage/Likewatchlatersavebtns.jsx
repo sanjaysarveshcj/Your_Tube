@@ -19,11 +19,11 @@ const Likewatchlatersavebtns = ({vv,vid}) => {
   const watchlaterlist=useSelector((s)=>s.watchlaterreducer)
   useEffect(()=>{
     likedvideolist?.data.filter(
-      (q)=>q.videoid ===vid && q.viewer ===currentuser.result?._id
+      (q)=>q.videoid === vid && q.viewer === currentuser?.result?._id
     )
     .map((m)=>setlikebtn(true));
     watchlaterlist?.data.filter(
-      (q)=>q.videoid ===vid && q.viewer ===currentuser.result?._id
+      (q)=>q.videoid ===vid && q.viewer ===currentuser?.result?._id
     )
     .map((m)=>setsavevideo(true));
   },[]);
